@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--초기화 -->
+    <style>
+    *{margin: 0;padding: 0;}
+    body{font-family: 'Times New Roman',serif;}
+    li{list-style: none;}
+    a{text-decoration: none;}
+    img{border:0;}
+  </style>
+  <!-- 헤더 -->
+  <style>
+    #main_header{
+      width:960px;margin:  0 auto;
+
+      height:160px;
+      position:relative;
+    }
+    #main_header>#title{
+      position: absolute;
+      left:20px; top:30px;
+    }
+    #main_header>#main_gnb{
+      position: absolute;
+      right: 0;top:0;
+    }
+    #main_header>#main_lnb{
+      position: absolute;
+      right:0;bottom: 10px;
+
+    }
+  </style>
+  <!-- 메뉴(1)-->
+  <style>
+    #main_gnb{position :fixed;}
+    #main_gnb>ul{overflow: hidden;}
+    #main_gnb>ul>li{float:left;}
+    #main_gnb>ul>li>a{
+      display: block;
+      padding: 2px 10px;
+      border:1px solid black;
+    }
+    #main_gnb>ul>li>a:hover{
+      background: black;
+      color:white;
+    }
+    #main_gnb>ul>li:first-child>a{border-radius:10px 0 0 10px;}
+    #main_gnb>ul>li:last-child>a{border-radius:0 10px 10px 0;}
+</style>
+<!--메뉴(2)-->
+  <style>
+    #main_lnb{position:fixed;}
+    #main_lnb>ul{overflow: hidden;}
+    #main_lnb>ul>li{float:left;}
+    #main_lnb>ul>li>a
+    {
+      display: block;
+      padding: 2px 10px;
+      border:1px solid black;
+    }
+    #main_lnb>ul>li>a:hover{
+      background: black;
+      color:white;
+    }
+    #main_lnb>ul>li:first-child>a{border-radius:10px 0 0 10px;}
+    #main_lnb>ul>li:last-childx>a{border-radius:0 10px 10px 0;}
+</style>
+<!-- 콘텐츠 -->
+<Style>
+  #content {
+    width:960px; margin: 0 auto;
+    overflow: :hidden;
+  }
+  #content>#main_section{
+    width:750px;
+
+    float:left;
+
+  }
+  #content>#main_aside{
+    width:200px;
+    margin-top: 100px;
+    float:right;
+  }
+  #content>#main_aside>h3{border:1px solid black;}
+
+</Style>
+
+<!-- 메인 푸터 -->
+<style>
+    #main_footer{
+        width:960px; margin:0 auto;
+        margin-bottom: 10px;
+          position: fixed;
+        bottom:0; left:0; right:0;
+   
+    }
+
+</style>
+<!-- 테이블 -->
+<style>
+
+</style>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+          $('#main_header').click(function(){
+              location.href='메인페이지.html';
+          });
+      });
+
+
+  </script>
+
+    
+    <!-- 식단 테이블 생성 자바스크립트 -->
+    <script language="javascript" type="text/javascript">
+
+        var liRowIdxs = ['월요일','화요일','수요일','목요일','금요일','토요일','일요일'];
+        var idx=0;
+
+        function addRow() {
+            var vmoring = document.getElementById("moring").value,
+            vlunch = document.getElementById("lunch").value,
+            vdinner = document.getElementById("dinner").value;
+            if (vmoring != "" && vlunch != "" && vdinner != ""){
+                var oRow = document.all.menu.insertRow();
+            var oCell0 = oRow.insertCell();
+                var oCell1 = oRow.insertCell();
+                var oCell2 = oRow.insertCell();
+                var oCell3 = oRow.insertCell();
+
+                if(idx<=6){
+                  oCell0.innerHTML = liRowIdxs[idx];    //번호 출력
+                }
+                else{
+                  idx=0;
+                    oCell0.innerHTML = liRowIdxs[idx];    //번호 출력                  
+                }
+                oCell1.innerHTML = vmoring; //아이디
+                oCell2.innerHTML = vlunch;   //이름
+
+                oCell3.innerHTML = vdinner;    //주소
+
+
+                document.getElementById("moring").value = "";
+                document.getElementById("lunch").value = "";
+                document.getElementById("dinner").value = "";
+                // RowIndex의 자동 재설정을 보여주기 위해 생성시마다 1씩 증가하는 변수.
+                idx++;
+            }
+            else{
+       //         alert("모든 데이터를 입력해 주세요");
+            }
+        }
+
+        // Row 최하단 추가 글 삭제
+        function delRow1(tdl) {
+
+            if (idx> 0) {
+                menu.deleteRow(idx--);
+            }
+        }
+
+  
+
+    </script>
+  
+
+
+  <title>KW Company</title>
+</head>
+<body>
+  <header id="main_header">
+    <div id="title">
+      <h1>KW COMPANY</h1>
+    </div>
+    <nav id="main_gnb">
+      <ul>
+        <li><a href="로그인화면.html">로그인</a></li>
+        <li><a href="회원가입.html">회원가입</a></li>
+      </ul>
+      </nav>        
+      <nav id="main_lnb">
+        <ul>
+          <li><a href="회사소개.html">회사 소개</a></il>
+          <li><a href="요리사소개.html">요리사 소개</a></li>
+          <li><a href="이번주식단.html">이번주 식단</a></il>
+          <li><a href="공지사항.html">공지사항</a></li>
+          <li><a href="건의사항.html">건의사항</a></il>
+         </ul>
+         </nav> 
+  </header>
+
+  <div id="content">
+    <section id="main_section">
+        아침 : <input type="text" name="moring" id="moring" value=""  maxlength="15" size="20"/>
+        점심 : <input type="text" name="lunch" id="lunch" value="" maxlength="15" size="20"/>
+        저녁 : <input type="text" name="dinner" id="dinner" value=""/>
+        <input type="button" value=" 추가 " onclick="addRow()"/>
+        <input type="button" value=" 삭제 " onclick="delRow1(document.all.menu)"/>
+
+    <br /><br />
+    <div style="float: none">
+        <div style="float: left" >
+            <table id="menu" border="1">
+                <tr>
+                    <th width="80">
+                        요일
+                    </th>
+                    <th width="170">
+                        아침
+                    </th>
+                    <th width="170">
+                        점심
+                    </th>
+                    <th width="200">
+                        저녁
+                    </th>
+                </tr>
+            </table>
+            <br />    
+        </div>
+    </div>
+
+
+
+    </section>
+
+  </div>
+<footer id="main_footer">
+  <h5>
+  서울시 노원구 광운로 20 (월계동 447-1) 광운대학교(01897) | 대표전화 02.940.5114<br>
+ COPYRIGHTⓒKWANGWOON UNIVERSITY. ALL RIGHTS RESERVED</h5>
+</footer>
+
+</body>
+</html>
